@@ -1,0 +1,49 @@
+
+import java.io.*;
+import java.util.*;
+import java.util.stream.*;
+public class Solution {
+
+    public static void main(String[] args) {
+        //define n
+        Scanner sc = new Scanner(System.in);
+        int n= sc.nextInt();
+        
+        
+        int[] odd = new int[n];
+        int[] even = new int[n];
+        
+        System.out.println("The Odd numbers from 1-"+n+" are:");
+        for(int i=1; i < n; i++){
+            
+            //if the number is not divisible by 2 then it is odd
+            if( i % 2 != 0){
+            //adding the number into an array odd[n] so we can do sum of the elements in array using IntStream sum() method
+            odd[i] =  i;
+             System.out.println(odd[i]);
+            }
+            
+        }
+       int odds_sum= IntStream.of(odd).map(i-> i*i).sum();
+       System.out.println("THE SUM OF THEIR SQUARE IS "+odds_sum);
+    
+    System.out.println("---------------------------------------------");
+    
+        System.out.println("The Even numbers from 1-"+n+" are:");
+        for(int i=1; i <n; i++){
+            
+            //if the number is  divisible by 2 then it is Even
+            if( i % 2 == 0){
+             even[i] =  i;
+             System.out.println(even[i]);
+            }
+            
+        }
+       int even_sum= IntStream.of(even).map(i-> i*i*i).sum();
+       System.out.println("THE SUM OF THEIR CUBE IS "+even_sum);
+    
+    
+    int total_sum = odds_sum+even_sum;
+    System.out.println("Total Sum ="+total_sum);
+        }
+    }
